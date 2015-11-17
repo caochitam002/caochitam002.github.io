@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider) { //Router config
     })
     .state('login', {
         url: '/login',
-        template: 'template/login.html'
+        templateUrl: 'template/login.html'
     });
 });
         //app.controller('loginCtrl',function($scope){});
