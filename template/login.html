@@ -1,4 +1,57 @@
-<h1>
-    Login
-</h1>
-<a ui-sref="home">Go Home</a> 
+<form id="login-form" name="loginForm" class="panel" ng-controller="loginCtrl" ng-submit="paAuth(loginForm.$valid)" novalidate>
+	<header><span class="title">Đăng nhập</span><a class="close-btn" ui-sref="home">x</a></header>
+	<section>
+		<div class="input-group">
+			<span class="hint" ng-show="loginForm.email.$touched && loginForm.email.$invalid">Email không đúng</span>
+			<input name="email" type="email" placeholder="Địa chỉ Email" ng-model="email" required>
+		</div>
+		<div class="input-group"><input name="password" type="password" placeholder="Mật khẩu" ng-model="password"></div>
+		<input type="submit" value="Đăng nhập" ng-disabled="loginForm.$invalid"><a class="forgot" ui-sref="forgotPassword">Mật khẩu?</a><br>
+		<button type="button" ng-click="OAuth('google')" type="button">Google</button>
+		<button type="button" ng-click="OAuth('facebook')">Facebook</button>
+	</section>
+	<style type="text/css">
+		#login-form{
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+		#login-form a{
+			color: inherit;
+			text-decoration: none;
+		}
+		#login-form>section{
+			padding:10px;
+		}
+		#login-form .input-group{
+			box-sizing: border-box;
+			width: 100%;
+			display: block;
+			padding: 5px 0;
+		}
+		#login-form .input-group>input{
+			width:180px;
+		}
+		#login-form input{
+			color:inherit;
+			padding:5px;
+		}
+		#login-form button{
+			padding: 5px;
+			margin-top:10px;
+			color:inherit;
+		}
+		#login-form .forgot{
+			float: right;
+			color: #868686;
+			font-size: 13px;
+		}
+		#login-form .oAuth{
+			display:block;
+			box-sizing: border-box;
+			width:100%;
+			padding: 10px;
+		}
+	</style>
+</form>

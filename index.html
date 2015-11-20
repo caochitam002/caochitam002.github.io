@@ -2,19 +2,107 @@
 <html>
 <head> 
 	<title>Quản lý bệnh nhân</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
-        html,body{min-width:100%; min-height:100%;margin:0;}
+		html,body{min-width:100%; min-height:100%;margin:0;}
 	</style>
 	<link rel="stylesheet" type="text/css" href="css/screen.css">
-    <script type="text/javascript" src="./js/angular.min.js"></script>
-    <script type="text/javascript" src="./js/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="./js/angular.min.js"></script>
+	<script type="text/javascript" src="./js/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="./js/angular-cookies.min.js"></script>
+	<script type="text/javascript" src="./js/firebase.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
 </head>
 <body ng-app="vhh">
-    <div ui-view></div>
-	<div id="overall-preloader" hidden><div class="spinner"><div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div></div><style type="text/css">#overall-preloader{position:fixed;height:100%;width:100%;background-color:rgba(174,218,228,.25)}.spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:40px;text-align:center;font-size:10px}.spinner>div{background-color:#333;height:100%;width:6px;display:inline-block;-webkit-animation:sk-stretchdelay 1.2s infinite ease-in-out;animation:sk-stretchdelay 1.2s infinite ease-in-out}.spinner .rect2{-webkit-animation-delay:-1.1s;animation-delay:-1.1s}.spinner .rect3{-webkit-animation-delay:-1s;animation-delay:-1s}.spinner .rect4{-webkit-animation-delay:-.9s;animation-delay:-.9s}.spinner .rect5{-webkit-animation-delay:-.8s;animation-delay:-.8s}@-webkit-keyframes sk-stretchdelay{0%,100%,40%{-webkit-transform:scaleY(.4)}20%{-webkit-transform:scaleY(1)}}@keyframes sk-stretchdelay{0%,100%,40%{transform:scaleY(.4);-webkit-transform:scaleY(.4)}20%{transform:scaleY(1);-webkit-transform:scaleY(1)}}</style></div>
-    <script type="text/javascript">
-    </script>
+	<div ui-view></div>
+	<div id="overall-preloader">
+		<div class="spinner">
+			<div class="rect1"></div> 
+			<div class="rect2"></div> 
+			<div class="rect3"></div> 
+			<div class="rect4"></div> 
+			<div class="rect5"></div>
+		</div>
+		<style type="text/css">
+			#overall-preloader {
+				position: fixed;
+				top:0;
+				left:0;
+				height: 100%;
+				width: 100%;
+				background-color: rgba(174, 218, 228, .25);
+			}
+			.spinner {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 50px;
+				height: 40px;
+				text-align: center;
+				font-size: 10px;
+			}
+			.spinner>div {
+				background-color: #333;
+				height: 100%;
+				width: 6px;
+				display: inline-block;
+				-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+				animation: sk-stretchdelay 1.2s infinite ease-in-out;
+			}
+			.spinner .rect2 {
+				-webkit-animation-delay: -1.1s;
+				animation-delay: -1.1s;
+			}
+			.spinner .rect3 {
+				-webkit-animation-delay: -1s;
+				animation-delay: -1s;
+			}
+			.spinner .rect4 {
+				-webkit-animation-delay: -.9s;
+				animation-delay: -.9s;
+			}
+			.spinner .rect5 {
+				-webkit-animation-delay: -.8s;
+				animation-delay: -.8s;
+			}
+			@-webkit-keyframes sk-stretchdelay {
+				0%, 100%, 40% {
+					-webkit-transform: scaleY(.4);
+				}
+				20% {
+					-webkit-transform: scaleY(1);
+				}
+			}
+			@keyframes sk-stretchdelay {
+				0%, 100%, 40% {
+					transform: scaleY(.4);
+					-webkit-transform: scaleY(.4);
+				}
+				20% {
+					transform: scaleY(1);
+					-webkit-transform: scaleY(1);
+				}
+			}
+		</style>
+	</div>
+	<div class="nlog">
+		<style type="text/css">
+			.nlog{
+				width: 320px;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				z-index: 1002;
+				text-align: left;
+				margin-left: 5px;
+				color: #2F5A53;
+				text-shadow: 0px 0px 5px #DA8E32;
+			}
+		</style>
+	</div>
 </body>
 </html>
