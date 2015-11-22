@@ -1,5 +1,5 @@
 <form id="login-form" name="loginForm" class="panel" ng-controller="loginCtrl" ng-submit="paAuth(loginForm.$valid)" novalidate>
-	<header><span class="title">Đăng nhập</span><a class="close-btn" ui-sref="home">x</a></header>
+	<header><span class="title">Đăng nhập</span><span class="close-btn" ng-click="goBack()">x</span></header>
 	<section>
 		<div class="input-group">
 			<span class="hint" ng-show="loginForm.email.$touched && loginForm.email.$invalid">Email không đúng</span>
@@ -19,7 +19,6 @@
 		}
 		#login-form a{
 			color: inherit;
-			text-decoration: none;
 		}
 		#login-form>section{
 			padding:10px;

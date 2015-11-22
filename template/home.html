@@ -1,7 +1,21 @@
 <div ng-controller="homeCtrl">
-	
-	<h1>
-		Home
-	</h1>
-	<a ui-sref="login">Login</a> | <a ui-sref="logout">Logout</a> 
+	<header>
+		<nav>
+			<div class="site-left-nav"><a class="site-logo" ui-sref="home"><b>Quản lý bệnh nhân</b></a>
+			</div>
+			<div class="site-right-nav">
+				<a ui-sref="user" ng-bind="displayName"></a> | <a ui-sref="login">Login</a> | <a ui-sref="logout">Logout</a>
+			</div>
+		</nav>
+		<section class="search-bar">
+			<div class="loader">
+			</div>
+			
+		</section>
+	</header>
+	<style type="text/css">
+		.site-left-nav{float:left;}
+		.site-right-nav{float:right;}
+		.search-bar{height:60px;}
+	</style>
 </div>

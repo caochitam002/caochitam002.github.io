@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+<body ng-app="test">
+<div ng-controller="testCtrl">
+	<button ng-click="go()">Go</button>
+	<p>Value: <span ng-bind="display"></span></p>
+	
+</div>
+</body>
+<script type="text/javascript">
+	var app = angular.module('test', []);
+	app.controller('testCtrl',function($scope){
+		$scope.display = 'Fist value';
+		$scope.go = function () {
+			$scope.display = 'After click';
+			setTimeout(function () {
+				console.log("change!");
+				$scope.display = 'Delay 3s by callback';
+				$scope.$apply();
+				console.log($scope.display)
+			}, 3000);
+		}
+	})
+</script>
+</html>
