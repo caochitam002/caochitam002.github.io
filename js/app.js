@@ -6,6 +6,7 @@ var config = {
 	devStatus: true,
 	systemTimeZoneOffset: 7
 };
+var patients;
 app.config(function($stateProvider, $urlRouterProvider) { //Router config
 	$urlRouterProvider.otherwise('/trang-chu');
 	$stateProvider
@@ -103,6 +104,18 @@ app.controller('forgotPasswordCtrl',function($scope, $state, $cookies){
 app.controller('homeCtrl',function($scope,$state,$cookies){
 	ctrlInit($scope,$state,$cookies);
 	changeDisplayName($scope);
+	psRef = rootRef.child('patients'); //Patients Reference.
+	$scope.loading = true;
+	nlog('Đang tải Danh sách bệnh nhân...');
+	psRef.once('value',function(snapshot) {
+		log(snapshot.val());
+		$scope.loading = false;
+		$scope.$apply();
+		nlog('Tải xuống Danh sách bệnh nhân thành công.');
+	});
+	$scope.showAddPatientForm = function() {
+		
+	}
 });
 
 
@@ -192,4 +205,10 @@ function changeDisplayName ($scope) {
 				$scope.displayName = "Người quản lý";
 		}
 	};
+}
+function dataTransferOn () {
+	
+}
+function dataTransferOff () {
+	
 }

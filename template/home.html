@@ -1,4 +1,4 @@
-<div ng-controller="homeCtrl">
+<div id="home" ng-controller="homeCtrl">
 	<header>
 		<nav>
 			<div class="site-left-nav"><a class="site-logo" ui-sref="home"><b>Quản lý bệnh nhân</b></a>
@@ -7,15 +7,74 @@
 				<a ui-sref="user" ng-bind="displayName"></a> | <a ui-sref="login">Login</a> | <a ui-sref="logout">Logout</a>
 			</div>
 		</nav>
-		<section class="search-bar">
-			<div class="loader">
+		<form  id="searchForm" name="searchForm" ng-submit="seach(searchForm.$valid)" novalidate>
+			<div id="search-preloader">
+				<img id="static-preloader" src="img/search-loader.png" ng-hide="loading" title="Tìm kiếm nâng cao">
+				<img id="dynamic-preloader" src="img/search-loader.gif" ng-show="loading" title="Đang tải dữ liệu">
 			</div>
-			
-		</section>
+			<div id="search-box">
+			<input name="query" ng-model="query" placeholder="Tìm kiếm...">
+			</div>
+			<div id="add-button"><span ng-click="showAddPatientForm()">+</span></div>
+		</form>
 	</header>
 	<style type="text/css">
-		.site-left-nav{float:left;}
-		.site-right-nav{float:right;}
-		.search-bar{height:60px;}
+		#home>header{
+			background: #f1f1f1;
+			border: 1px solid #E0E0E0;
+		}
+		#home>header>nav{
+			display:table;
+			width:100%;
+			border-bottom: 1px solid #E0E0E0;
+		}
+		.site-left-nav{display:table-cell;}
+		.site-right-nav{display:table-cell;text-align:right;}
+		#searchForm{
+			display:table;
+			padding:10px;
+			width:100%;
+		}
+		#searchForm>div{
+			display:table-cell;
+			vertical-align:middle;
+		}
+		#search-preloader{
+			width:40px;
+		}
+		#search-preloader>img{
+			display:block;
+			height: 30px;
+			cursor:pointer;
+		}
+		#search-box{
+		}
+		#search-box input{
+			display:inline-block;
+			position:relative;
+			height:40px;
+			width:100%;
+			padding:5px;
+			font-size:17px;
+			border:1px solid #ccc;
+			border-radius:5px;
+		}
+		#add-button{
+			width:45px;
+			text-align:right;
+		}
+		#add-button>span{
+			display:inline-block;
+			height: 40px;
+			width: 40px;
+			line-height:40px;
+			text-align:center;
+			vertical-align:middle;
+			font-size:20px;
+			color:#23527c;
+			background: #BAD8D1;
+			border-radius: 2px;
+			cursor:pointer;
+		}
 	</style>
 </div>
